@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/groupofdoom',
-    {
-      useNewUrlParser: true, 
-      useUnifiedTopology: true,
-    }
-  );
-  
-  module.exports = mongoose.connection;
+  process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/EatSleepWorkoutRepeat',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+module.exports = mongoose.connection;
