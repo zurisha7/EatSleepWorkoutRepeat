@@ -7,18 +7,18 @@ import {
 
 } from '@apollo/client'; 
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
 import Home from './components/Home';
-import Login from './pages/Login';
+import Login from './components/Login';
 import Eat from './components/Eat';
 import Sleep from './components/Sleep';
 import Workout from './components/Workout';
-import Signup from './pages/Signup';
+import Signup from './components/Signup';
 import NoMatch from './pages/NoMatch';
 import Contact from './components/Contact';
 
@@ -43,7 +43,7 @@ const client = new ApolloClient({
 function App() {
   return (
    <ApolloProvider client={client}>
-    <BrowserRouter>
+    <Router>
       <div>
         <Header />
         <Nav />
@@ -86,7 +86,7 @@ function App() {
       </div>
       <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
    </ApolloProvider>
   );
 }
