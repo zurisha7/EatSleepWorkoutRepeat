@@ -37,7 +37,7 @@ const handleFormSubmit = async (event) => {
                 <input
                 placeholder='Username'
                 name='username'
-                type='username'
+                type='input'
                 id='username'
                 value={formState.username}
                 OnChange={handleChange}

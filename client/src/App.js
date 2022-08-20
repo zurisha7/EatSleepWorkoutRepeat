@@ -12,7 +12,6 @@ import { setContext } from '@apollo/client/link/context';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Nav from './components/Nav';
 import Home from './components/Home';
 import Login from './components/Login';
 import Eat from './components/Eat';
@@ -46,7 +45,6 @@ function App() {
     <Router>
       <div>
         <Header />
-        <Nav />
       <div className='container'>
         <Routes>
           <Route
