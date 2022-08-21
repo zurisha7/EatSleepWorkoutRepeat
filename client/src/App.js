@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import React from 'react';
 import {
   ApolloClient,
@@ -93,3 +95,4 @@ function App() {
 }
 
 export default App;
+>>>>>>> 1100f389f7dd6515f18915846568666078126c3a
