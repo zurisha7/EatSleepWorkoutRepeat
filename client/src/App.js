@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   ApolloClient,
@@ -6,7 +5,7 @@ import {
   ApolloProvider,
   createHttpLink,
 
-} from '@apollo/client'; 
+} from '@apollo/client';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
@@ -27,8 +26,8 @@ const httpLink = createHttpLink({
 });
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
-  return{
-    headers: { 
+  return {
+    headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
     },
@@ -42,54 +41,54 @@ const client = new ApolloClient({
 
 function App() {
   return (
-   <ApolloProvider client={client}>
-    <Router>
+    <ApolloProvider client={client}>
+      <Router>
         <Header />
         <div id="page-container">
           <div id="content-wrap">
-        <Routes>
-          <Route
-            path='/'
-            element={<Home />}
-            />
-          <Route
-            path='/login'
-            element={<Login/>}
-            />
-          
-          <Route
-            path='/eat'
-            element={<Eat/>}
-            />
-          <Route
-            path='/sleep'
-            element={<Sleep/>}
-            />
-          <Route
-            path='/workout'
-            element={<Workout/>}
-            />
-          <Route
-            path='/Contact'
-            element={<Contact/>}
-            />
-          <Route
-            path='/Signup'
-            element={<Signup/>}
-            />
-          <Route 
-            path='*'
-            element={<NoMatch />}
-            />
-       
-        </Routes>
+            <Routes>
+              <Route
+                path='/'
+                element={<Home />}
+              />
+              <Route
+                path='/login'
+                element={<Login />}
+              />
+
+              <Route
+                path='/eat'
+                element={<Eat />}
+              />
+              <Route
+                path='/sleep'
+                element={<Sleep />}
+              />
+              <Route
+                path='/workout'
+                element={<Workout />}
+              />
+              <Route
+                path='/Contact'
+                element={<Contact />}
+              />
+              <Route
+                path='/Signup'
+                element={<Signup />}
+              />
+              <Route
+                path='*'
+                element={<NoMatch />}
+              />
+
+            </Routes>
+          </div>
         </div>
-      </div>
-      <div>
-      <Footer />
-    </div>
-  </Router>
-</ApolloProvider>
+        <div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
