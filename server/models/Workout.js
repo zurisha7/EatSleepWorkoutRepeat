@@ -1,10 +1,10 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const WorkoutSchema = new Schema({
-	user: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'user'
-	},
+const workoutSchema = new Schema({
+	user: [{
+		type: Schema.Types.ObjectId,
+		ref: 'User'
+	}],
 	// Name of user creating the routine
 	name: {
 		type: String,
@@ -52,5 +52,7 @@ const WorkoutSchema = new Schema({
 	]
 });
 
+const Workout = model('Workout', workoutSchema);
+
 // exporting the workout schema
-module.exports = mongoose.model('workout', WorkoutSchema);
+module.exports = Workout;
