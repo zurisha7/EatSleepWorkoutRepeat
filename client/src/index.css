@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+  
+#content-wrap {
+  padding-bottom: 5rem;    
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+.App {
+    text-align: center;
+  }
+  
+   /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+   .navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+  }
+  
+  /* Remove the jumbotron's default bottom margin */ 
+   .jumbotron {
+    margin-bottom: 0;
+    height: 200px;
+  }
+  
+  .footTextTwo {
+    text-decoration: none;  
+    color:black  
+  }
+
+  footer {
+    display: flex;
+    color: black;
+    padding: 5px;
+    font-size: 15px;
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;            
+    align-items: center;
+    justify-content: space-between;
+  }
+  
