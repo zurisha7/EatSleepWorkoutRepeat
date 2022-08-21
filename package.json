@@ -12,21 +12,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zurisha7/groupofdoom.git"
+        "url": "git+https://github.com/zurisha7/eatsleepworkoutrepeat.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/zurisha7/Deep-Thoughts/issues"
+        "url": "https://github.com/zurisha7/eatsleepworkoutrepeat/issues"
     },
-    "homepage": "https://github.com/zurisha7/Deep-Thoughts#readme",
+    "homepage": "https://github.com/zurisha7/eatsleepworkoutrepeat#readme",
     "devDependencies": {
         "concurrently": "^7.3.0"
     },
     "dependencies": {
-        "@apollo/client": "^3.6.9",
-        "jwt-decode": "^3.1.2",
-        "react-router-dom": "^6.3.0"
+        "jwt-decode": "^3.1.2"
+        
     }
 }
