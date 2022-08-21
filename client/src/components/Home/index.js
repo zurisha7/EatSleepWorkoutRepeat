@@ -36,7 +36,7 @@ const Home =() => {
             <div className="col-sm-4"> 
               <div className="panel panel-primary">
                 <div className="panel-heading">WORKOUT</div>
-                <div className="panel-body"><img src={workout} class="img-responsive" style={{width:"100%"}} alt="WORKOUT"/></div>
+                <div className="panel-body"><img src={workout} className="img-responsive" style={{width:"100%"}} alt="WORKOUT"/></div>
                 <div className="panel-footer">How many calories did you burn?</div>
                 <label htmlFor="text" style={{padding: "10px"}}>  Calories Burned:</label>
                 <input type="text" id="lname" name="lname "/><br/><br/>

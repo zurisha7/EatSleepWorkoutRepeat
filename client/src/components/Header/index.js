@@ -40,11 +40,7 @@ const Header  = () => {
     
             <ul className="nav navbar-nav">
                 <li className='nav-item'>
-           
-            <Link to ='/' className='navHome'>
-                PROFILE
-            </Link>
-     
+             
                     <Link to='/' className='nav-link'>
                         HOME
                     </Link>
@@ -65,9 +61,13 @@ const Header  = () => {
                     </Link>
                 </li>
                 <li className='nav-item'>
+                    <Link to='/Conact' className='nav-link'>
+                        CONTACT
+                    </Link>
+                </li>
+                <li className='nav-item'>
                     <Link to='/login' className='nav-link' onClick={logout}>
-                    <span class="glyphicon glyphicon-user"></span>
-                        LOGOUT                        
+                       LOGOUT                        
                     </Link>
                 </li>
             </ul>
@@ -76,13 +76,13 @@ const Header  = () => {
             <ul className="nav navbar-nav navbar-right">
                 <li className='nav-item'>
                     <Link to='/login' className='nav-link' >
+                    <span class="glyphicon glyphicon-user"></span>
                         LOGIN
                     </Link>
                 </li>
                 <li className='nav-item'>
                     <Link to='/Signup' className='nav-link'>
-                    <span className="glyphicon glyphicon-shopping-cart"></span>
-                        SIGNUP
+                          SIGNUP
                     </Link>
                 </li>
             </ul>

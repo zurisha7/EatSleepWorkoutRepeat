@@ -3,15 +3,12 @@ import React from 'react';
 const Footer = () => {
     return (
         // need to figure out why link icons are not showing, but they will soon.
-        <footer className="container-fluid">
-        <p>Online Store Copyright</p>  
-        <form className="form-inline">
-            <p>Donate:</p>
-            {/* Link to stripe */}
-          <input type="email" className="form-control" size="50" placeholder="Email Address" />
-          <button type="button" className="btn btn-danger">Sign Up</button>
-        </form>
-      </footer>
+        <footer className="container-fluid"> 
+        <div>
+           <p className='footText text-left'>Thanks for letting us help YOU! </p>        
+           <a href ='/Stripe' className="footTextTwo text-right">Help support us!!  Donate here!!</a>
+        </div>
+        </footer>
     );
 };
 

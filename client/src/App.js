@@ -43,9 +43,9 @@ function App() {
   return (
    <ApolloProvider client={client}>
     <Router>
-      <div>
         <Header />
-      <div className='container'>
+        <div id="page-container">
+          <div id="content-wrap">
         <Routes>
           <Route
             path='/'
@@ -80,12 +80,15 @@ function App() {
             path='*'
             element={<NoMatch />}
             />
+       
         </Routes>
+        </div>
       </div>
+      <div>
       <Footer />
-      </div>
-    </Router>
-   </ApolloProvider>
+    </div>
+  </Router>
+</ApolloProvider>
   );
 }
 
