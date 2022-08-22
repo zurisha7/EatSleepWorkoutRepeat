@@ -28,20 +28,24 @@ export const ADD_USER = gql`
         }
     }
 `
-// export const ADD_WORKOUT =gql`
-//     mutation addWorkout($name: String, $description: String, $caloriesBurned: Int, $date: String, $workoutName: String, $workoutRoutine: String, $set: Int, $reps: Int, $weight: Int) {
-//         addWorkout(name: $name, description: $description, caloriesBurned: $caloriesBurned, date: $date, workoutName: $workoutName, workoutRoutine: $workoutRoutine, set: $set, reps: $reps, weight: $weight) {
-//             workout {
-//                 _id
-//                 name
-//                 description
-//                 caloriesBurned
-//                 date
-//                 exercises               
+export const ADD_WORKOUT =gql`
+    mutation addWorkout($name: String, $description: String, $caloriesBurned: Int, $date: String, $workoutName: String, $workoutRoutine: String, $set: Int, $reps: Int, $weight: Int) {
+        addWorkout(name: $name, description: $description, caloriesBurned: $caloriesBurned, date: $date, workoutName: $workoutName, workoutRoutine: $workoutRoutine, set: $set, reps: $reps, weight: $weight) {
+            workout {
+                _id
+                name
+                description
+                caloriesBurned
+                date
+                exercises {
+                    set
+                    reps
+                    weight
+                }             
 
-//             }
+            }
 
-//         }
+        }
 
-//     }
-// `
+    }
+`
