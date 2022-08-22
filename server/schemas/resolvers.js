@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Workout } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -56,7 +56,22 @@ const resolvers = {
 
             const token = signToken(user);
             return { token, user };
-        }
+        },
+        // addWorkout: async (parent, args, context) => {
+        //     if(context.user) {
+        //         const workout = await Workout.create({ ...args, username: context.user.username });
+
+        //         await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             { $push: { thoughts: thought._id }},
+        //             { new: true }
+                    
+        //         );
+
+        //         return workout;
+            // }
+
+        // }
     }
 };
 

@@ -5,8 +5,8 @@ import Auth from '../../utils/auth';
 
 const Signup = () => {
     const [addUser, { error }] = useMutation(ADD_USER);
-    const [formState, setFormState]= useState({ username: '', email: '', password:'' });
-    const { username, email, password } = formState;
+    const [formState, setFormState]= useState({ username: '', email: '', password:'', Dob: '', FavWorkout: '' });
+    const { username, email, password, Dob, FavWorkout } = formState;
     
 
     const [status, setFormStatus] = useState('');
@@ -27,12 +27,15 @@ const handleFormSubmit = async (event) => {
         const { data } = await addUser({
             variables: { ...formState }
         });
+
         Auth.login(data.addUser.token);
+        
     } catch(err) {
         console.error(err);
     }
 
     setFormStatus('Signed up!')
+    window.location.assign('/');
 };
 
 
@@ -62,12 +65,22 @@ const handleFormSubmit = async (event) => {
                                             </div>
                                                 <div className="form-group">
  
-                                                    <input type="text" className="form-control" name="email" id="email" placeholder="email" defaultValue={email} onBlur={handleChange} />
+                                                    <input type="email" className="form-control" name="email" id="email" placeholder="email" defaultValue={email} onBlur={handleChange} />
                                                 </div>
                                             </div>
                                             <div className="col-md-6"> 
                                                 <div className="form-group">
-                                                    <input type="email" className="form-control" name="password" id="password" placeholder="password" defaultValue={password} onBlur={handleChange} />
+                                                    <input type="password" className="form-control" name="password" id="password" placeholder="Password" defaultValue={password} onBlur={handleChange} />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6"> 
+                                                <div className="form-group">
+                                                    <input type="date" className="form-control" name="Dob" id="Dob" placeholder="Birthday" defaultValue={Dob} onBlur={handleChange} />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6"> 
+                                                <div className="form-group">
+                                                    <input type="text" className="form-control" name="FavWorkout" id="FavWorkout" placeholder="Favorite Workout" defaultValue={FavWorkout} onBlur={handleChange} />
                                                 </div>
                                             </div>
                                             <div className="col-md-12">
@@ -77,19 +90,16 @@ const handleFormSubmit = async (event) => {
                                                 </div>
                                             </div>
                                         </div>
-                      
-            {error && (
-             <div>
-                 <p className="errorMessage">{error}</p> </div>
-                  )}
-                             
-                  </form>
-             </div>
-         </div>
-         </div>
-         </div>
-         </div>
-         </div>
+                                    </form>
+                                </div> 
+                            {error && (<div>
+                                 <p className="errorMessage">{error}</p> </div>
+                                    )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
          </div>
      </section>
     );

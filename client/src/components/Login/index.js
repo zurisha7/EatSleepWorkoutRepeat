@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-const Login = () => {
+const Login = (props) => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, {error }] = useMutation(LOGIN_USER);
 
@@ -16,7 +16,7 @@ const Login = () => {
         setFormState({
             ...formState,
             [name]: value
-        });
+        })
     };
 
     const handleFormSubmit = async (event) => {
@@ -28,11 +28,17 @@ const Login = () => {
                 variables: {...formState}
             });
             
+            console.log(data);
             Auth.login(data.login.token)
+
         } catch (err) {
             console.error(err);
         }
-        setStatus('Submit');
+        setFormState({ 
+            email: '', 
+            password: ''
+        });
+        
     };
 
 
@@ -60,12 +66,12 @@ const Login = () => {
                                            <div className="col-md-6">
                                                <div className="form-group">
 
-                                                   <input type="text" className="form-control" name="email" id="email" placeholder="email" defaultValue={email} onBlur={handleChange} />
+                                                   <input type="email" className="form-control" name="email" id="email" placeholder="email" defaultValue={email} onBlur={handleChange} />
                                                </div>
                                            </div>
                                            <div className="col-md-6"> 
                                                <div className="form-group">
-                                                   <input type="email" className="form-control" name="password" id="password" placeholder="password" defaultValue={password} onBlur={handleChange} />
+                                                   <input type="password" className="form-control" name="password" id="password" placeholder="password" defaultValue={password} onBlur={handleChange} />
                                                </div>
                                            </div>
                                            <div className="col-md-12">
@@ -75,19 +81,16 @@ const Login = () => {
                                                </div>
                                            </div>
                                        </div>
-                     
-           {error && (
-            <div>
-                <p className="errorMessage">{error}</p> </div>
-                 )}
-                            
-                 </form>
+                                    </form>
+                                </div> {error && (
+                                            <div>
+                                            <p className="errorMessage">Failed to login!!!</p></div>
+                                                 )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
         </div>
     </section>
      );

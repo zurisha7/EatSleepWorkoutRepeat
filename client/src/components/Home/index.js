@@ -3,14 +3,17 @@ import eat from '../../images/eat.jpeg'
 import sleep from '../../images/sleep.jpeg'
 import workout from '../../images/workout.jpeg'
 
+import Auth from '../../utils/auth';
+
 const Home =() => {
 
   //my guess
    // const [formData, setFormData] = useState()
 
+   const loggedIn = Auth.loggedIn();
     return (
 
-        <section>
+        <section className={`home ${loggedIn}`}>
         <div className="container">    
           <div className="row">
             <div className="col-sm-4">
@@ -20,7 +23,7 @@ const Home =() => {
                 <div className="panel-footer">How many calories did you eat?</div>
                 <label htmlFor="text" style={{padding: "10px"}}>  Calories Consumed:</label>
                 <input type="text" id="lname" name="lname"/><br/><br/>
-                <input type="submit" value="Submit"/>
+                <input type="submit" id="submit" value="Submit"/>
               </div>
             </div>
             <div className="col-sm-4"> 

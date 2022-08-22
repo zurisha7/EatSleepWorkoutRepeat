@@ -76,7 +76,7 @@ const Header  = () => {
             <ul className="nav navbar-nav navbar-right">
                 <li className='nav-item'>
                     <Link to='/login' className='nav-link' >
-                    <span class="glyphicon glyphicon-user"></span>
+                    <span className="glyphicon glyphicon-user"></span>
                         LOGIN
                     </Link>
                 </li>
