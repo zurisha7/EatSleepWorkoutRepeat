@@ -1,0 +1,17 @@
+const { Schema, model } = require('mongoose');
+
+const eatSchema = new Schema({
+	date: {
+		type: Date,
+		default: Date.now
+	},
+	caloriesEaten: {
+		type: Number,
+		required: true
+	}
+});
+
+const Eat = model('Eat', eatSchema);
+
+// exporting eat schema
+module.exports = Eat;
