@@ -29,6 +29,7 @@ export const QUERY_ME = gql`
       FavWorkout
     }
   }
+
 `;
 
 export const QUERY_SLEEP = gql`
@@ -53,4 +54,4 @@ query sleeps{$username:String) {
         createdAt 
     }
 }
-`
+`;

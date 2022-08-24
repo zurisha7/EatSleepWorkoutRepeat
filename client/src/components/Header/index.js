@@ -4,13 +4,16 @@ import Auth from '../../utils/auth';
 import logo from '../../images/logo.png'
 
 
-const logout = event => {
-    event.preventDefault();
-    Auth.logout();
-};
+
+
 
 
 const Header = () => {
+
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    };
 
     return (
         <header>
