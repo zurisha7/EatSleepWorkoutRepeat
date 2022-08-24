@@ -6,6 +6,24 @@
 ![GitHub stars badge](https://img.shields.io/github/stars/zurisha7/EatSleepWorkoutRepeat)
 [![GitHub branches](https://badgen.net/github/branches/zurisha7/EatSleepWorkoutRepeat)](https://github.com/Tydomx/Social-Network-API/)
 
+## Table of Contents: 
+### [Project Description](#project-description)
+### [Technologies](#technologies-used)
+### [Challenges/Successes](#challenges--successes)
+### [Installation](#installation)
+### [Screenshots](#screenshots-📷)
+### [Usage](#usage)
+### [Future Development](#future-development)
+### [Contributors](#contributors-👤)
+### [License](#license)
+
+---
+
+## Deployment
+[EatSleepWorkoutRepeat]()
+
+---
+
 # Project Description
 The purpose of this application is to allow authenticated users to record their meals, hours of sleep, and workouts to help the user build a healthy lifestyle. When finished with the logs the app will calculate calorie levels and suggest healthy meal choices based on the user's preferences.
 
@@ -30,6 +48,8 @@ The purpose of this application is to allow authenticated users to record their 
 - The dopamine of getting information to show up on the app
 - Fixing the bugs so that things would work more smoothly
 
+---
+
 ## Installation
 To install all of the packages and dependencies, go to the root directory and type
 
@@ -50,6 +70,8 @@ As the user, to access the information on the website you will have to sign up f
 - Achievement tracking system
 - Fix styling
 
+
+---
 
  ### **Contributors** 👤
 
