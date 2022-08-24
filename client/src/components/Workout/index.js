@@ -35,19 +35,7 @@ import WorkoutForm from "../WorkoutForm";
             </div>
         </main>
 
-//    return (  
 
-//     {/* <div className="col-sm-4"> 
-//       <div className="panel panel-primary">
-//         <div className="panel-heading">PREVIOUS WORKOUTS:</div> */}
-        
-//        <WorkoutList workouts={workouts} />
-//        </div>
-//     </div>
- 
-// </form> 
-// {error && <div> Error adding workout </div>}
-// </section>
 
     )
 
