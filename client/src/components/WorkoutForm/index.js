@@ -15,7 +15,7 @@ const WorkoutForm = () => {
             // prepend the newest thought to the front of the array
             cache.writeQuery({
                 query: QUERY_WORKOUTS,
-                data: { workouts: [addWorkout, ...workout] }
+                data: { workouts: [addWorkout, ...workouts] }
             });
         }
     });

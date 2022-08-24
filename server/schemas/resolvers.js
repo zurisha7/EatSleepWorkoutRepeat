@@ -21,9 +21,22 @@ const resolvers = {
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('__v -password');
-        }
+        },
+        sleeps: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Sleep.find(params).sort({ createdAt: -1 });
+        },
+        sleep: async (parent, { _id }) => {
+            return Sleep.findOne({ _id });
     },
-
+    workouts: async (parent, { username }) => {
+        const params = username ? { username } : {};
+        return Workout.find(params).sort({ createdAt: -1 });
+    },
+    workout: async (parent, { _id }) => {
+        return Workout.findOne({ _id });
+    }
+},
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
