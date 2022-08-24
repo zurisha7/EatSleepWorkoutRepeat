@@ -29,7 +29,25 @@ const userSchema = new Schema(
             type: String,
             required: true,
             maxlength: 30
-        }
+        },
+        workouts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Workout"
+            }
+        ],
+        foods: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Food"
+            }
+        ],
+        sleeps: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Sleep'
+            }
+        ]
     },
     {
         toJSON: {
@@ -47,10 +65,19 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
+userSchema.pre('deleteMany', async function (callback) {
+    const user = this;
+    user.model('Sleep').deleteOne({ user: username.username }, callback);
+});
+
 // check password to hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('workoutCount').get(function () {
+    return this.workouts.length;
+});
 
 const User = model('User', userSchema);
 

@@ -7,6 +7,7 @@ import logo from '../../images/logo.png'
 
 
 
+
 const Header = () => {
 
     const logout = event => {
@@ -16,13 +17,14 @@ const Header = () => {
 
     return (
         <header>
-            <div className="jumbotron">
+            <div className="jumbotron center">
                 <div className="container text-center">
                     <img src={logo} alt="EatSleepWorkoutRepeatLogo" />
                 </div>
+
             </div>
 
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-inverse center">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -48,7 +50,7 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link to='/Eat' className='nav-link' >
+                                        <Link to='/Food' className='nav-link' >
                                             EAT
                                         </Link>
                                     </li>
@@ -63,7 +65,9 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link to='/Conact' className='nav-link'>
+
+                                        <Link to='/Contact' className='nav-link'>
+
                                             CONTACT
                                         </Link>
                                     </li>

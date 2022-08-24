@@ -1,14 +1,14 @@
 import React from 'react';
-import SleepList from '../SleepList';
-import SleepForm from '../SleepForm';
+import FoodList from '../FoodList';
+import FoodForm from '../FoodForm';
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
-import { QUERY_SLEEPS } from '../../utils/queries';
+import { QUERY_FOODS } from '../../utils/queries';
 
-const Sleep = () => {
-  const { loading, data } = useQuery(QUERY_SLEEPS);
-  const sleeps = data?.sleeps || [];
+const Food = () => {
+  const { loading, data } = useQuery(QUERY_FOODS);
+  const foods = data?.foods || [];
   const loggedIn = Auth.loggedIn();
 
   return (
@@ -16,16 +16,16 @@ const Sleep = () => {
       <div className="flex-row justify-space-between">
         {loggedIn && (
           <div className="col-12 mb-3">
-            <SleepForm />
+            <FoodForm />
           </div>
         )}
         <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <SleepList
-              sleeps={sleeps}
-              title="Sleeps"
+            <FoodList
+              foods={foods}
+              title="Foods"
             />
           )}
         </div>
@@ -34,4 +34,4 @@ const Sleep = () => {
   );
 };
 
-export default Sleep;
+export default Food;
