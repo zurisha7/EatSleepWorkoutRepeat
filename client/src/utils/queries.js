@@ -27,6 +27,13 @@ export const QUERY_ME = gql`
       email
       Dob
       FavWorkout
+      sleeps {
+        _id
+        timeSlept
+        sleepRating
+        username
+        createdAt
+      }
     }
   }
 
@@ -45,8 +52,8 @@ export const QUERY_SLEEP = gql`
 `;
 
 export const QUERY_SLEEPS = gql`
-query sleeps{$username:String) {
-    sleeps(username:$username){
+query sleeps{$username: String) {
+    sleeps(username: $username){
         _id
         timeSlept
         sleepRating
