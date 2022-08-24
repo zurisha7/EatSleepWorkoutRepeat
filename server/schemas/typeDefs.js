@@ -7,6 +7,15 @@ const typeDefs = gql`
         email: String
         Dob: String
         FavWorkout: String
+        sleeps: [Sleep]
+    }
+
+    type Sleep {
+        _id: ID
+        timeSlept: String
+        sleepRating: String
+        username: String
+        createdAt: String
     }
 
     type Auth {
@@ -18,6 +27,8 @@ const typeDefs = gql`
         me: User
         users: [User]
         user(username: String!): User
+        sleeps(username: String): [Sleep]
+        sleep(_id: ID!) : Sleep
     }
 
     type Mutation {
@@ -25,6 +36,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!, Dob: String!, FavWorkout: String!): Auth
         updateUser(_id: ID!, username: String, email: String, password: String, Dob: String!, FavWorkout: String!): User!
         deleteUser(_id:ID!): User!
+        addSleep(timeSlept: String!, sleepRating: String!): Sleep
     }
 `;
 

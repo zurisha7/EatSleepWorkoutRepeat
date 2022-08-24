@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User, Sleep } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -7,7 +7,8 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
-                // .select('-__v -password');
+                    .populate('sleeps')
+                    .select('-__v -password');
 
                 return userData;
             }
@@ -16,11 +17,20 @@ const resolvers = {
         },
         users: async () => {
             return User.find()
-            // .select('-__v -password');
+                .populate('sleeps')
+                .select('-__v -password');
         },
         user: async (parent, { username }) => {
             return User.findOne({ username })
-                .select('__v -password');
+                .populate('sleeps')
+            // .select('__v -password');
+        },
+        sleeps: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Sleep.find(params).sort({ createdAt: -1 });
+        },
+        sleep: async (parent, { _id }) => {
+            return Sleep.findOne({ _id });
         }
     },
 
@@ -31,16 +41,39 @@ const resolvers = {
 
             return { token, user };
         },
-        updateUser: async (parent, { _id, username, email, password, Dob, FavWorkout }) => {
-            return User.findOneAndUpdate({ _id: _id }, { username: username, email: email, password: password, Dob: Dob, FavWorkout: FavWorkout }, { new: true });
+        addSleep: async (parent, args, context) => {
+            console.log(context)
+            if (context.user) {
+                const sleep = await Sleep.create({
+                    ...args, username: context.user.username
+                });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { sleeps: sleep._id } },
+                    { new: true }
+                );
+
+                return sleep;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        updateUser: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+        deleteUser: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findByIdAndDelete(context.user._id, args, { new: true });
+            }
+
             // throw new AuthenticationError('Not logged in');
         },
-        deleteUser: async (parent, { _id }) => {
-            return User.findOneAndDelete({ _id: _id })
-        },
 
-        //     throw new AuthenticationError('Not logged in');
-        // },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 

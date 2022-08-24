@@ -29,7 +29,13 @@ const userSchema = new Schema(
             type: String,
             required: true,
             maxlength: 30
-        }
+        },
+        sleeps: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Sleep'
+            }
+        ]
     },
     {
         toJSON: {
@@ -45,6 +51,11 @@ userSchema.pre('save', async function (next) {
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
     next();
+});
+
+userSchema.pre('deleteMany', async function (callback) {
+    const user = this;
+    user.model('Sleep').deleteOne({ user: username.username }, callback);
 });
 
 // check password to hashed password

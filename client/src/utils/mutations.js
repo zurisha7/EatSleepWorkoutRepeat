@@ -26,3 +26,17 @@ export const ADD_USER = gql`
     }
 `
 
+export const ADD_SLEEP = gql`
+    mutation addSleep($timeSlept: String!, $sleepRating: String!) {
+        addSleep(timeSlept: $timeSlept, sleepRating: $sleepRating) {
+            sleep {
+                _id
+                timeSlept
+                sleepRating
+                username
+                createdAt
+            }
+        }
+    }
+`
+
