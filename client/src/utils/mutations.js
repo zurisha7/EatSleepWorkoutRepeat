@@ -27,12 +27,12 @@ export const ADD_USER = gql`
 
 export const ADD_WORKOUT = gql`
     mutation addWorkout($workoutName: String!, $description: String!, $caloriesBurned: String!, $exercises: String!) {
-        addWorkout(workoutName: $workoutName, description: $description, caloriesBurned: caloriesBurned, exercises: $exercises){
+        addWorkout(workoutName: $workoutName, description: $description, caloriesBurned: $caloriesBurned, exercises: $exercises){
             _id
+            username
             workoutName
             description
             caloriesBurned
-            date
             exercises 
 
         }
@@ -40,19 +40,20 @@ export const ADD_WORKOUT = gql`
 `;
 
 export const ADD_SLEEP = gql`
-    mutation addSleep($date: String, $timeSlept: String) {
-        addSleep(date: $date, timeSlept: $timeSlept) {
+    mutation addSleep($sleepRating: String!, $timeSlept: String!, $username: String!) {
+        addSleep(sleepRating: $sleepRating, timeSlept: $timeSlept, username: $username) {
             _id
-            date
+            sleepRating
             timeSlept
+            username
         }
     }
 `;
 export const ADD_FOOD = gql`
-    mutation addFood($date: String, $caloriesEaten: String) {
-        addFood(date: $date, caloriesEaten: $caloriesEaten) {
+    mutation addFood( $caloriesEaten: String!, $foodName: String!) {
+        addFood( caloriesEaten: $caloriesEaten, foodName: $foodName) {
             _id
-            date
+            foodName
             caloriesEaten
         }
     }

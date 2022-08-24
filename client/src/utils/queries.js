@@ -1,9 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_WORKOUTS = gql`
-    query workouts($username: String) {
+    query workouts($username: String!) {
         workouts(username: $username) {
             _id
+            username
             workoutName
             description
             caloriesBurned
@@ -15,28 +16,11 @@ export const QUERY_WORKOUT = gql`
     query workout($id: ID!) {
         workout(_id: $id) {
             _id
+            username
             workoutName
             description
             caloriesBurned
             exercises 
-        }
-    }
-`
-export const QUERY_SLEEP = gql`
-    query sleep($id: ID!) {
-        sleep(_id: $id) {
-            _id
-            date
-            timeSlept
-        }
-    }
-`
-export const QUERY_SLEEPS = gql`
-    query sleeps($username: String!) {
-        sleeps(username: $username){
-            _id
-            date
-            timeSlept
         }
     }
 `
@@ -45,8 +29,9 @@ export const QUERY_EATS = gql`
     query eats($username: String) {
         eats(username: $username) {
             _id
-            date
-            timeSlept
+            username
+            foodName
+            caloriesEaten
         }
     }
 `
@@ -55,21 +40,25 @@ export const QUERY_EAT = gql`
     query eat($id: ID!) {
         eat(_id: $id) {
             _id
-            date
+            username
+            foodName
             caloriesEaten
         }
     }
 `
 
 export const QUERY_USER = gql`
-    query user($username: String!) {
-        user(username: $username) {
+    query user($id: ID!) {
+        user(_id: $id) {
             _id
             password
+            Dob
             username
             email
-            workoutCount
-            workouts                 
+            favWorkout
+            workouts  {
+                workoutName
+            }               
             }
         }
 `
@@ -78,11 +67,11 @@ export const QUERY_ME = gql`
     me {
         _id
         username
+        password
         email
-
-        workoutCount
+        Dob
+        favWorkout
         workouts {
-            _id
             workoutName
         }
     }

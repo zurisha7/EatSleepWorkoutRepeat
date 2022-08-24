@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const foodSchema = new Schema({
-	date: {
-		type: Date,
-		default: Date.now
-	},
 	caloriesEaten: {
 		type: Number,
 		required: true
@@ -12,6 +8,11 @@ const foodSchema = new Schema({
 	foodName: {
 		type: String,
 		required: true
+	}
+},
+{
+	toJSON: {
+		getters: true
 	}
 });
 

@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import { Link } from 'react-router-dom'
 
  import eat from '../../images/eat.jpeg';
  import sleep from '../../images/sleep.jpeg';
@@ -25,17 +25,17 @@ const Home = (props) => {
     <div className="row">
       <div className="col-sm-3">
         <div className="panel panel-primary">
-          <div className="panel-heading">{data.username}</div>
+          {/* <div className="panel-heading">{data.username}</div> */}
           {/* <div className="panel-body"><img src={avatar} class="img-responsive" alt="avatar" /></div> */}
           <div className="panel-footer">Email Address:{data.email}</div>
-          <label htmlFor="text" style={{padding: "5px"}}>Favorite Workout:{data.favWorkout}</label>
+          <p style={{padding: "5px"}}>Favorite Workout:{data.favWorkout}</p>
         </div>
       </div>
     <div className="row">
       <div className="col-sm-3">
         <div className="panel panel-primary">
           <div className="panel-heading">EAT</div>
-          <div className="panel-body"><img src={eat} class="img-responsive" alt="Food" /></div>
+          <div className="panel-body"><img src={eat} className="img-responsive" alt="Food" /></div>
           <div className="panel-footer">How many calories did you eat?</div>
           <input type="submit" value="Submit" />
         </div>
@@ -43,15 +43,15 @@ const Home = (props) => {
       <div className="col-sm-3">
         <div className="panel panel-primary">
           <div className="panel-heading">SLEEP</div>
-          <div className="panel-body"><img src={sleep} class="img-responsive" alt="Sleep" /></div>
+          <div className="panel-body"><img src={sleep} className="img-responsive" alt="Sleep" /></div>
           <div className="panel-footer">What was your sleep rating?</div>
-          <input htmlType="submit" value="Submit" />
+          <button className="submit"><Link to='/Sleep' /></button>
         </div>
       </div>
       <div className="col-sm-3">
         <div className="panel panel-primary">
           <div className="panel-heading">WORKOUT</div>
-          <div className="panel-body"><img src={workout} class="img-responsive" alt="Workout" /></div>
+          <div className="panel-body"><img src={workout} className="img-responsive" alt="Workout" /></div>
           <div className="panel-footer">How many calories did you burn?</div>
           <input type="submit" value="Submit" />
         </div>
