@@ -50,7 +50,7 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link to='/Eat' className='nav-link' >
+                                        <Link to='/Food' className='nav-link' >
                                             EAT
                                         </Link>
                                     </li>

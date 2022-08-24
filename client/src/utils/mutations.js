@@ -54,21 +54,12 @@ export const ADD_WORKOUT = gql`
     }
 `;
 
-export const ADD_SLEEP = gql`
-    mutation addSleep($sleepRating: String!, $timeSlept: String!, $username: String!) {
-        addSleep(sleepRating: $sleepRating, timeSlept: $timeSlept, username: $username) {
-            _id
-            sleepRating
-            timeSlept
-            username
-        }
-    }
-`;
 export const ADD_FOOD = gql`
     mutation addFood( $caloriesEaten: String!, $foodName: String!) {
         addFood( caloriesEaten: $caloriesEaten, foodName: $foodName) {
             _id
             foodName
+            username
             caloriesEaten
         }
     }

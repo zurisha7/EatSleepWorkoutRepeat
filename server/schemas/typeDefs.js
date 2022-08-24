@@ -33,6 +33,7 @@ type User {
     type Food {
         _id: ID
         caloriesEaten: String
+        username: String
         foodName: String
     }
 

@@ -14,7 +14,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Login from './components/Login';
-import Eat from './components/Eat';
+import Food from './components/Food';
 import Sleep from './components/Sleep';
 import Workout from './components/Workout';
 import Signup from './components/Signup';
@@ -57,8 +57,8 @@ function App() {
               />
 
               <Route
-                path='/eat'
-                element={<Eat />}
+                path='/food'
+                element={<Food />}
               />
               <Route
                 path='/sleep'

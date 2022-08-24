@@ -5,7 +5,12 @@ import { ADD_WORKOUT } from '../../utils/mutations';
 import { QUERY_WORKOUTS } from '../../utils/queries';
 
 const WorkoutForm = () => {
-    const [formState, setFormState] = useState({ workoutName: '', description: '', caloriesBurned: '', exercises: '' });
+    const [formState, setFormState] = useState({
+        workoutName: '',
+        description: '',
+        caloriesBurned: '',
+        exercises: ''
+    });
 
     const [addWorkout] = useMutation(ADD_WORKOUT, {
         update(cache, { data: { addWorkout } }) {
@@ -15,7 +20,7 @@ const WorkoutForm = () => {
             // prepend the newest thought to the front of the array
             cache.writeQuery({
                 query: QUERY_WORKOUTS,
-                data: { workouts: [addWorkout, ...workout] }
+                data: { workouts: [addWorkout, ...workouts] }
             });
         }
     });
@@ -54,8 +59,8 @@ const WorkoutForm = () => {
                     className="form-input"
                     placeholder="Time Slept"
                     name="workoutName"
-                    type="timeSlept"
-                    id="timeSlept"
+                    type="workoutName"
+                    id="workoutName"
                     value={formState.workoutName}
                     onChange={handleChange}
                 />
@@ -63,30 +68,29 @@ const WorkoutForm = () => {
                     className="form-input"
                     placeholder="Sleep Rating"
                     name="description"
-                    type="sleepRating"
-                    id="sleepRating"
+                    type="description"
+                    id="description"
                     value={formState.description}
                     onChange={handleChange}
                 />
-                 <input
+                <input
                     className="form-input"
-                    placeholder="Sleep Rating"
+                    placeholder="Time Slept"
                     name="caloriesBurned"
-                    type="sleepRating"
-                    id="sleepRating"
+                    type="caloriesBurned"
+                    id="caloriesBurned"
                     value={formState.caloriesBurned}
                     onChange={handleChange}
                 />
-                 <input
+                <input
                     className="form-input"
-                    placeholder="Sleep Rating"
+                    placeholder="Time Slept"
                     name="exercises"
-                    type="sleepRating"
-                    id="sleepRating"
+                    type="exercises"
+                    id="exercises"
                     value={formState.exercises}
                     onChange={handleChange}
                 />
-
                 <button className="btn col-12 col-md-3" type="submit">
                     Submit
                 </button>

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_WORKOUTS = gql`
-    query workouts($username: String!) {
+    query workouts($username: String) {
         workouts(username: $username) {
             _id
             username
@@ -25,9 +25,9 @@ export const QUERY_WORKOUT = gql`
     }
 `
 
-export const QUERY_EATS = gql`
-    query eats($username: String) {
-        eats(username: $username) {
+export const QUERY_FOODS = gql`
+    query foods($username: String) {
+        foods(username: $username) {
             _id
             username
             foodName
@@ -36,9 +36,9 @@ export const QUERY_EATS = gql`
     }
 `
 
-export const QUERY_EAT = gql`
-    query eat($id: ID!) {
-        eat(_id: $id) {
+export const QUERY_FOOD = gql`
+    query food($id: ID!) {
+        food(_id: $id) {
             _id
             username
             foodName
@@ -61,6 +61,12 @@ export const QUERY_USER = gql`
         sleepRating
         username
         createdAt
+      }
+      foods {
+        _id
+        username
+        foodName
+        caloriesEaten
       }
     }
   }

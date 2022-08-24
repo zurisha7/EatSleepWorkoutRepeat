@@ -30,35 +30,18 @@ const userSchema = new Schema(
             required: true,
             maxlength: 30
         },
-<<<<<<< HEAD
-        workout: [
+        workouts: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "Workout"
             }
         ],
-
-        eat: [
-=======
-        
-         workouts: [
-            {
-            type: Schema.Types.ObjectId,
-            ref: "Workout"
-        }
-         ],
-        
         foods: [
->>>>>>> 7f370fc2afb8731875f29154a52811dd2992c550
             {
                 type: Schema.Types.ObjectId,
-                ref: "Eat"
+                ref: "Food"
             }
         ],
-<<<<<<< HEAD
-
-=======
->>>>>>> 7f370fc2afb8731875f29154a52811dd2992c550
         sleeps: [
             {
                 type: Schema.Types.ObjectId,

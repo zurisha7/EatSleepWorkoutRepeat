@@ -1,17 +1,14 @@
-import React from "react";
-import WorkoutForm from "../WorkoutForm";
-//import WorkoutList from '../../components/workoutList';
- import {  useQuery } from '@apollo/client';
-//  import { ADD_WORKOUT }  from '../../utils/mutations';
- import { QUERY_WORKOUTS } from '../../utils/queries'
- import WorkoutList from "../workoutList";
- import Auth from '../../utils/auth';
+import React from 'react';
+import WorkoutList from '../WorkoutList';
+import WorkoutForm from '../WorkoutForm';
 
+import Auth from '../../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_WORKOUTS } from '../../utils/queries';
 
- const Workout= () => {
+const Workout = () => {
     const { loading, data } = useQuery(QUERY_WORKOUTS);
-    const workouts = data?.sleeps || [];
-
+    const workouts = data?.workouts || [];
     const loggedIn = Auth.loggedIn();
 
     return (
@@ -28,29 +25,13 @@ import WorkoutForm from "../WorkoutForm";
                     ) : (
                         <WorkoutList
                             workouts={workouts}
-                            title="Workout"
+                            title="Workouts"
                         />
                     )}
                 </div>
             </div>
         </main>
-
-//    return (  
-
-//     {/* <div className="col-sm-4"> 
-//       <div className="panel panel-primary">
-//         <div className="panel-heading">PREVIOUS WORKOUTS:</div> */}
-        
-//        <WorkoutList workouts={workouts} />
-//        </div>
-//     </div>
- 
-// </form> 
-// {error && <div> Error adding workout </div>}
-// </section>
-
-    )
-
+    );
 };
 
 export default Workout;
