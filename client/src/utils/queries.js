@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+<<<<<<< HEAD
 export const QUERY_WORKOUTS = gql`
     query workouts($username: String) {
         workouts(username: $username) {
@@ -19,24 +20,6 @@ export const QUERY_WORKOUT = gql`
             description
             caloriesBurned
             exercises 
-        }
-    }
-`
-export const QUERY_SLEEP = gql`
-    query sleep($id: ID!) {
-        sleep(_id: $id) {
-            _id
-            date
-            timeSlept
-        }
-    }
-`
-export const QUERY_SLEEPS = gql`
-    query sleeps($username: String!) {
-        sleeps(username: $username){
-            _id
-            date
-            timeSlept
         }
     }
 `
@@ -62,40 +45,76 @@ export const QUERY_EAT = gql`
 `
 
 export const QUERY_USER = gql`
-    query user($username: String!) {
-        user(username: $username) {
-            _id
-            password
-            username
-            email
-            workoutCount
-            workouts                 
-            }
-        }
-`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      Dob
+      FavWorkout
+      sleeps {
+        _id
+        timeSlept
+        sleepRating
+        username
+        createdAt
+      }
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
 {
-    me {
-        _id
-        username
-        email
-
-        workoutCount
-        workouts {
-            _id
-            workoutName
-        }
-    }
-}
-`
-export const QUERY_ME_BASIC = gql`
-{
-    me {
+  me {
     _id
     username
     email
-    favWorkout
+    Dob
+    FavWorkout
+    sleeps {
+      _id
+      timeSlept
+      sleepRating
+      username
+      createdAt
+    }
+  }
+}
+
+`;
+
+export const QUERY_ME_BASIC = gql`
+{
+    me {
+      _id
+      username
+      email
+      Dob
+      FavWorkout
+    }
+  }
+`;
+
+export const QUERY_SLEEP = gql`
+query sleep($id: ID!) {
+  sleep(_id: $id) {
+        _id
+        timeSlept
+        sleepRating
+        username
+        createdAt
+  }
+}
+`;
+
+export const QUERY_SLEEPS = gql`
+query sleeps($username: String) {
+    sleeps(username: $username){
+      _id
+        timeSlept
+        sleepRating
+        username
+        createdAt 
     }
 }
-`
-
+`;

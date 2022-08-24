@@ -7,6 +7,7 @@ import logo from '../../images/logo.png'
 
 
 
+
 const Header = () => {
 
     const logout = event => {
@@ -64,7 +65,9 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li className='nav-item'>
+
                                         <Link to='/Contact' className='nav-link'>
+
                                             CONTACT
                                         </Link>
                                     </li>

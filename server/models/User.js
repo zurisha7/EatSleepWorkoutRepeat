@@ -30,24 +30,24 @@ const userSchema = new Schema(
             required: true,
             maxlength: 30
         },
-        
-         workout: [
+        workout: [
             {
-            type: Schema.Types.ObjectId,
-            ref: "Workout"
-        }
-         ],
-        
+                type: Schema.Types.ObjectId,
+                ref: "Workout"
+            }
+        ],
+
         eat: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "Eat"
             }
         ],
-        sleep: [
+
+        sleeps: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "Sleep"
+                ref: 'Sleep'
             }
         ]
     },
@@ -67,15 +67,20 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
+userSchema.pre('deleteMany', async function (callback) {
+    const user = this;
+    user.model('Sleep').deleteOne({ user: username.username }, callback);
+});
+
 // check password to hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('workoutCount').get(function() {
+userSchema.virtual('workoutCount').get(function () {
     return this.workouts.length;
-  });
-  
+});
+
 const User = model('User', userSchema);
 
 module.exports = User;

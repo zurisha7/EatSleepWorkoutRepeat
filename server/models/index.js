@@ -3,4 +3,4 @@ const Workout = require('./Workout');
 const Food = require('./Food')
 const Sleep = require('./Sleep')
 
-module.exports = { User, Workout, Food, Sleep};
+module.exports = { User, Workout, Food, Sleep };
