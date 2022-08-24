@@ -29,7 +29,12 @@ const userSchema = new Schema(
             type: String,
             required: true,
             maxlength: 30
-        }
+        },
+         workouts: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: "Workout"}
+         ]
     },
     {
         toJSON: {
@@ -52,6 +57,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
+userSchema.virtual('workoutCount').get(function() {
+    return this.workouts.length;
+  });
+  
 const User = model('User', userSchema);
 
 module.exports = User;

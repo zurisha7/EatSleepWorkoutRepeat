@@ -69,11 +69,11 @@ function App() {
                 element={<Workout />}
               />
               <Route
-                path='/Contact'
+                path='/contact'
                 element={<Contact />}
               />
               <Route
-                path='/Signup'
+                path='/signup'
                 element={<Signup />}
               />
               <Route

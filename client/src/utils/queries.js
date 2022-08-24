@@ -1,6 +1,67 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USER = gql`  
+export const QUERY_WORKOUTS = gql`
+    query workouts($username: String) {
+        workouts(username: $username) {
+            _id
+            workoutName
+            description
+            caloriesBurned
+            exercises 
+        }
+    }
+`
+export const QUERY_WORKOUT = gql`
+    query workout($id: ID!) {
+        workout(_id: $id) {
+            _id
+            workoutName
+            description
+            caloriesBurned
+            exercises 
+        }
+    }
+`
+export const QUERY_SLEEP = gql`
+    query sleep($id: ID!) {
+        sleep(_id: $id) {
+            _id
+            date
+            timeSlept
+        }
+    }
+`
+export const QUERY_SLEEPS = gql`
+    query sleeps($username: String!) {
+        sleeps(username: $username){
+            _id
+            date
+            timeSlept
+        }
+    }
+`
+
+export const QUERY_EATS = gql`
+    query eats($username: String) {
+        eats(username: $username) {
+            _id
+            date
+            timeSlept
+        }
+    }
+`
+
+export const QUERY_EAT = gql`
+    query eat($id: ID!) {
+        eat(_id: $id) {
+            _id
+            date
+            caloriesEaten
+        }
+    }
+`
+
+export const QUERY_USER = gql`
     query user($username: String!) {
         user(username: $username) {
             _id
@@ -9,71 +70,34 @@ export const QUERY_USER = gql`
             workoutCount
             workouts {
                 _id
-                name
-                description
-                caloriesBurned
-                date
-                exercises: {
-                    set
-                    reps
-                    weight
-                }
+                workoutRoutine
             }
-
         }
     }
 `
-
 export const QUERY_ME = gql`
-    {
-        me{
+{
+    me {
+        _id
+        username
+        email
+        workoutCount
+        workouts {
             _id
-            username
-            email
-            workoutCount
-            workouts {
-                _id
-                name
-                description
-                caloriesBurned
-                date
-                exercises: {
-                    set
-                    reps
-                    weight
-                }
-
-            }
+            workoutName
         }
     }
+}
+`
+export const QUERY_ME_BASIC = gql`
+{
+    me {
+    _id
+    username
+    email
+    favWorkout
+    workoutCount
+    }
+}
 `
 
-export const QUERY_WORKOUTS =gql`
-    query workouts($username: String) {
-        workouts(username: $username) {
-            _id
-            name
-            description
-            caloriesBurned
-            date
-            exercises: {
-                set
-                reps
-                weight
-            }
-        }
-    }
-`
-    
-    export const QUERY_WORKOUT = gql`
-        query workout($id: ID!) {
-            workout(_id: $id) {
-                _id
-                name
-                description
-                caloriesBurned
-                date
-                [exercises] 
-            }
-        }
-    `;

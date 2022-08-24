@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import workoutList from '../../components/workoutList';
+//import WorkoutList from '../../components/workoutList';
+ import { useMutation } from '@apollo/client';
+ import { ADD_WORKOUT }  from '../../utils/mutations';
+ import { QUERY_ME, QUERY_WORKOUTS } from '../../utils/queries';
 
-import { useMutation } from '@apollo/client';
-import { ADD_WORKOUT }  from '../../utils/mutations';
-import { QUERY_ME, QUERY_WORKOUTS } from '../../utils/queries';
 
-const Workout = () => {
-    const [formState, setFormState ] = useState({workoutName: '', description: '', caloriesBurned: '', date: '', exercises: '', set: '', reps: '', weight: ''});
+  const Workout = (props) => {
+ const [formState, setFormState ] = useState({workoutName: '', description: '', caloriesBurned: '', exercises: ''});
 
     
-    const [addWorkout, { error }] = useMutation(ADD_WORKOUT, {
-        update(cache, { data: { addWorkout }}){
+ const [addWorkout, { error }] = useMutation(ADD_WORKOUT, {
+     update(cache, { data: { addWorkout }}){
             
-            try {
+        try {
                 const { me } = cache.readQuery({ query: QUERY_ME });
                     cache.writeQuery({
                         query: QUERY_ME,
@@ -47,59 +47,54 @@ const Workout = () => {
                 variables: {...formState }
             });
 
+            addWorkout(data.addWorkout);
         } catch (err) {
             console.error(err)
         }
 
         setFormState({
-            name: '',
+            workoutName: '',
             description: '',
-            caloriesBurned: '', 
-            date: '',  
+            caloriesBurned: '',  
             exercises: '', 
-            set: '', 
-            reps: '', 
-            weight: ''
+           
         });
     };
 
 
     return (  
-<form>  
-<div className="container">    
-  <div className="row">
+<section>
+<form onSubmit={handleFormSubmit}> 
+ <div className="container">    
+ <div className="row">
     <div className="col-sm-4">
       <div className="panel panel-primary">
         <div className="panel-heading">WORKOUT</div>
-        <label htmlFor="text" style={{padding: "10px"}}>  Workout Routine</label>
-        <input type="text" id="lname" name="workoutRoutine" placeholder="Routine Name" value={formState.workoutName} onChange={handleChange} /><br /><br />
+        <label htmlFor="text" style={{padding: "10px"}}>  Workout Name: </label>
+        <input type="text" id="lname" name="workoutName" placeholder="Workout Name" value={formState.workoutName} onChange={handleChange} /><br /><br />
         <label htmlFor="text" style={{padding: "10px"}} >  Calories Burned:</label>
         <input type="text" id="lname" name="caloriesBurned" placeholder="Calories Burned" value={formState.caloriesBurned} onChange={handleChange} /><br/><br/>
-        <label htmlFor="text" style={{padding: "10px"}}>Date: {date}</label>
-        <input type="date" id="lname" name="date" placeholder="Date" defaultValue={date}/><br/><br/>
-        <label htmlFor="text" style={{padding: "10px"}}>Set: {set}</label>
-        <input type="text" id="lname" name="lname"/><br/><br/>
-        <label htmlFor="text" style={{padding: "10px"}}>Reps:{reps}</label>
-        <input type="text" id="lname" name="lname"/><br/><br/>
-        <label htmlFor="text" style={{padding: "10px"}}>Weight:{weight}</label>
-        <input type="text" id="lname" name="lname"/><br/><br/>
+        <label htmlFor="text" style={{padding: "10px"}}>Description of workout:</label>
+        <input type="text" id="lname" name="description" placeholder="Description" value={formState.description} onChange={handleChange}/><br/><br/>
+        <label htmlFor="text" style={{padding: "10px"}}>Exercise:</label>
+        <input type="text" id="lname" name="exercises" placeholder="Exercise" value={formState.exercises} onChange={handleChange}/><br/><br/>
         <input type="submit" value="Submit" />
       </div>
     </div>
     <div className="col-sm-4"> 
       <div className="panel panel-primary">
         <div className="panel-heading">PREVIOUS WORKOUTS:</div>
-        <p>{workoutList}</p>
-        <div className="panel-footer"></div>
-      </div>
+       
+       </div>
     </div>
-  </div>
-</div>
-</form>
-
+ </div>
+ </div>
+</form> 
+{error && <div> Error adding workout </div>}
+</section>
 
     )
 
-}
+};
 
 export default Workout;

@@ -6,7 +6,7 @@ const workoutSchema = new Schema({
 		ref: 'User'
 	}],
 	// Name of user creating the routine
-	name: {
+	workoutName: {
 		type: String,
 		required: true
 	},
@@ -18,38 +18,10 @@ const workoutSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	// when user did the workout
-	date: {
-		type: Date,
-		default: Date.now
-	},
-	// list of exercises
-	exercises: [
-		{
-			// name of the workout
-			workoutName: {
-				type: String,
-				required: true
-			},
-			// workout Routine
-			workoutRoutine: [
-				{
-					set: {
-						type: Number,
-						required: true
-					},
-					reps: {
-						type: Number,
-						required: true
-					},
-					weight: {
-						type: Number,
-						required: true
-					}
-				}
-			]
-		}
-	]
+	exercises: {
+		type: String, 
+		required: true
+	}
 });
 
 const Workout = model('Workout', workoutSchema);

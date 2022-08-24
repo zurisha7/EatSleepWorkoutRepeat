@@ -2,9 +2,9 @@
   position: relative;
   min-height: 100vh;
 }
-  
+
 #content-wrap {
-  padding-bottom: 5rem;    
+  padding-bottom: 5rem;
 }
 
 #submit {
@@ -13,37 +13,58 @@
 }
 
 .App {
-    text-align: center;
-  }
-  
-   /* Remove the navbar's default rounded borders and increase the bottom margin */ 
-   .navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
-  }
-  
-  /* Remove the jumbotron's default bottom margin */ 
-   .jumbotron {
-    margin-bottom: 0;
-    height: 200px;
-  }
-  
-  .footTextTwo {
-    text-decoration: none;  
-    color:black  
-  }
+  text-align: center;
+}
 
-  footer {
-    display: flex;
-    color: black;
-    padding: 5px;
-    font-size: 15px;
-    background-color: gray;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 5rem;            
-    align-items: center;
-    justify-content: space-between;
-  }
-  
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+  margin-bottom: 50px;
+  border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+  margin-bottom: 0;
+  height: 200px;
+}
+
+.footTextTwo {
+  text-decoration: none;
+  color: black;
+}
+
+footer {
+  display: flex;
+  color: black;
+  padding: 5px;
+  font-size: 15px;
+  background-color: gray;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.btn {
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  border: none;
+  color: var(--dark);
+  outline: none;
+  background-color: var(--secondary);
+  transition: all 0.5s;
+}
