@@ -79,6 +79,7 @@ export const QUERY_ME = gql`
         _id
         username
         email
+
         workoutCount
         workouts {
             _id
@@ -94,7 +95,6 @@ export const QUERY_ME_BASIC = gql`
     username
     email
     favWorkout
-    workoutCount
     }
 }
 `

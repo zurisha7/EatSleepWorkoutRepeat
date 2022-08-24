@@ -30,11 +30,26 @@ const userSchema = new Schema(
             required: true,
             maxlength: 30
         },
-         workouts: [
+        
+         workout: [
             {
             type: Schema.Types.ObjectId,
-            ref: "Workout"}
-         ]
+            ref: "Workout"
+        }
+         ],
+        
+        eat: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Eat"
+            }
+        ],
+        sleep: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "Sleep"
+            }
+        ]
     },
     {
         toJSON: {

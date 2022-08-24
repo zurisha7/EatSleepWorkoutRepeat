@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Workout } = require('../models');
+const { User, Workout, Sleep, Eat } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -70,7 +70,35 @@ const resolvers = {
                 return workout;
             }
         
+        },
+        addFood: async(parent, args, context) => {
+            if(context.user) {
+                const food = await Food.create({ ...args, username: context.user.username });
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { foods: food._id }},
+                    { new: true }
+                );
+
+                return food;
+            }
+        
         }
+        // addSleep: async(parent, args, context) => {
+        //     if(context.user) {
+        //         const sleep = await Sleep.create({ ...args, username: context.user.username });
+
+        //         await User.findByIdAndUpdate(
+        //             { _id: context.user._id },
+        //             { $push: { sleeps: sleep._id }},
+        //             { new: true }
+        //         );
+
+        //         return sleep;
+        //     }
+        
+        // }
     }
 };
 

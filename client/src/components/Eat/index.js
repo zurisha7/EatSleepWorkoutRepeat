@@ -1,30 +1,30 @@
 import React, { useState } from "react";
 import eat from '../../images/eat.jpeg';
 import { useMutation } from '@apollo/client';
-import { ADD_EAT } from "../../utils/mutations";
+import { ADD_FOOD } from "../../utils/mutations";
 import { QUERY_EAT, QUERY_EATS, QUERY_ME } from "../../utils/queries";
 
 
 const Eat = () => {
-  const [formState, setFormState ] = useState({ date: '', caloriesEaten: '' })
+  const [formState, setFormState ] = useState({ foodName: '', caloriesEaten: '' })
 
-  const [addEat, {error}] = useMutation(ADD_EAT, {
-      update(cache, {data: { addEat }} ){
+  const [addFood, {error}] = useMutation(ADD_FOOD, {
+      update(cache, {data: { addFood }} ){
 
         try { 
           const { me } = cache.readQuery({ query: QUERY_ME });
             cache.writeQuery({
               query: QUERY_ME,
-              data:  { me: { ...me, eats: [ ...me.eats, addEat ]} }
+              data:  { me: { ...me, foods: [ ...me.foods, addFood ]} }
         });
       } catch (err) {
         console.error(err);
       }
   
-      const { eats } = cache.readQuery({ query: QUERY_EAT });
+      const { foods } = cache.readQuery({ query: QUERY_EAT });
         cache.writeQuery({
           query: QUERY_EATS,
-          data: { eats: [addEat, ...eats]},
+          data: { foods: [addFood, ...foods]},
         });
       }
     });
@@ -42,17 +42,17 @@ const Eat = () => {
       event.preventDefault();
 
       try {
-        const { data } = await addEat({
+        const { data } = await addFood({
           variables: {...formState }
         });
 
-        addEat(data.addEat)
+        addFood(data.addFood)
       } catch(err) {
         console.error(err)
       }
 
       setFormState({
-        date: '',
+        foodName: '',
         caloriesEaten: ''
       })
     }
@@ -67,7 +67,7 @@ const Eat = () => {
           <label htmlFor="text" style={{padding: "10px"}}>Calories Eaten</label>
           <input type="text" id="lname" name="caloriesEaten" placeholder="Calories" value={formState.caloriesEaten} onChange={handleChange}/><br/><br/>
           <label htmlFor="text" style={{padding: "10px"}}>Date</label>
-          <input type="date" id="lname" name="date" placeholder="date" value={formState.date} onChange={handleChange}/><br/><br/>
+          <input type="text" id="lname" name="foodName" placeholder="food Name" value={formState.foodName} onChange={handleChange}/><br/><br/>
           <input type="submit" value="Submit"/>
         </div>
       </div>

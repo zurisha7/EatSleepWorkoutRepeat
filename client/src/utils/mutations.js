@@ -48,9 +48,9 @@ export const ADD_SLEEP = gql`
         }
     }
 `;
-export const ADD_EAT = gql`
-    mutation addEat($date: String, $caloriesEaten: String) {
-        addEat(date: $date, caloriesEaten: $caloriesEaten) {
+export const ADD_FOOD = gql`
+    mutation addFood($date: String, $caloriesEaten: String) {
+        addFood(date: $date, caloriesEaten: $caloriesEaten) {
             _id
             date
             caloriesEaten
