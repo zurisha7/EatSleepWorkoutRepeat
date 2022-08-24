@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client';
 
-<<<<<<< HEAD
 export const QUERY_WORKOUTS = gql`
-    query workouts($username: String) {
+    query workouts($username: String!) {
         workouts(username: $username) {
             _id
+            username
             workoutName
             description
             caloriesBurned
@@ -16,6 +16,7 @@ export const QUERY_WORKOUT = gql`
     query workout($id: ID!) {
         workout(_id: $id) {
             _id
+            username
             workoutName
             description
             caloriesBurned
@@ -28,8 +29,9 @@ export const QUERY_EATS = gql`
     query eats($username: String) {
         eats(username: $username) {
             _id
-            date
-            timeSlept
+            username
+            foodName
+            caloriesEaten
         }
     }
 `
@@ -38,7 +40,8 @@ export const QUERY_EAT = gql`
     query eat($id: ID!) {
         eat(_id: $id) {
             _id
-            date
+            username
+            foodName
             caloriesEaten
         }
     }

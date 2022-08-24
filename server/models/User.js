@@ -25,11 +25,12 @@ const userSchema = new Schema(
             required: true,
             match: [/^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])-\d{4}$/, 'Not a valid Date of Birth!']
         },
-        FavWorkout: {
+        favWorkout: {
             type: String,
             required: true,
             maxlength: 30
         },
+<<<<<<< HEAD
         workout: [
             {
                 type: Schema.Types.ObjectId,
@@ -38,12 +39,26 @@ const userSchema = new Schema(
         ],
 
         eat: [
+=======
+        
+         workouts: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: "Workout"
+        }
+         ],
+        
+        foods: [
+>>>>>>> 7f370fc2afb8731875f29154a52811dd2992c550
             {
                 type: Schema.Types.ObjectId,
                 ref: "Eat"
             }
         ],
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f370fc2afb8731875f29154a52811dd2992c550
         sleeps: [
             {
                 type: Schema.Types.ObjectId,

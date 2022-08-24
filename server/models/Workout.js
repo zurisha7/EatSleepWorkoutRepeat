@@ -15,7 +15,7 @@ const workoutSchema = new Schema({
 		required: true
 	},
 	caloriesBurned: {
-		type: Number,
+		type: String,
 		required: true
 	},
 	exercises: {
