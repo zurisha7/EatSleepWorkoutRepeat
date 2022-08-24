@@ -65,15 +65,13 @@ export const QUERY_USER = gql`
     query user($username: String!) {
         user(username: $username) {
             _id
+            password
             username
             email
             workoutCount
-            workouts {
-                _id
-                workoutRoutine
+            workouts                 
             }
         }
-    }
 `
 export const QUERY_ME = gql`
 {

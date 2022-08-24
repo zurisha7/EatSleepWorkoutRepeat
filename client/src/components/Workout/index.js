@@ -2,65 +2,44 @@ import React, { useState } from "react";
 //import WorkoutList from '../../components/workoutList';
  import { useMutation } from '@apollo/client';
  import { ADD_WORKOUT }  from '../../utils/mutations';
- import { QUERY_ME, QUERY_WORKOUTS } from '../../utils/queries';
+// import { QUERY_ME, QUERY_WORKOUTS } from '../../utils/queries';
+ 
 
 
-  const Workout = (props) => {
- const [formState, setFormState ] = useState({workoutName: '', description: '', caloriesBurned: '', exercises: ''});
-
-    
- const [addWorkout, { error }] = useMutation(ADD_WORKOUT, {
-     update(cache, { data: { addWorkout }}){
-            
-        try {
-                const { me } = cache.readQuery({ query: QUERY_ME });
-                    cache.writeQuery({
-                        query: QUERY_ME,
-                        data: { me: { ...me, workouts: [...me.workouts, addWorkout ] }}
-                    });
-            } catch (err) {
-                console.error(err);
-            }
-
-    const { workouts }= cache.readQuery({ query: QUERY_WORKOUTS });
-            cache.writeQuery({
-                query: QUERY_WORKOUTS, 
-                data: { workouts: [addWorkout, ...workouts ]},
-            });
-        }
+ const Workout= () => {
+    const [formState, setFormState] = useState({
+        workoutName: '',
+        description: '',
+        caloriesBurned: '',
+        exercises: '',
+        
     });
+    const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
+    // update state based on form input changes
     const handleChange = (event) => {
-        const {name, value} = event.target;
+        const { name, value } = event.target;
 
         setFormState({
             ...formState,
-            [name]: value
+            [name]: value,
         });
     };
 
+    // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { data } = await addWorkout({
-                variables: {...formState }
+            await addWorkout({
+                variables: { ...formState },
             });
 
-            addWorkout(data.addWorkout);
-        } catch (err) {
-            console.error(err)
+    
+        } catch (e) {
+            console.error(e);
         }
-
-        setFormState({
-            workoutName: '',
-            description: '',
-            caloriesBurned: '',  
-            exercises: '', 
-           
-        });
     };
-
 
     return (  
 <section>
@@ -84,6 +63,7 @@ import React, { useState } from "react";
     <div className="col-sm-4"> 
       <div className="panel panel-primary">
         <div className="panel-heading">PREVIOUS WORKOUTS:</div>
+       <p>{formState.caloriesBurned}{formState.description}{formState.workoutName}{formState.exercises}</p>
        
        </div>
     </div>
