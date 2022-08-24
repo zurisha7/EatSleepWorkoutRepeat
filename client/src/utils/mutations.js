@@ -36,5 +36,5 @@ export const ADD_SLEEP = gql`
                 createdAt
         }
     }
-`
+`;
 

@@ -2,7 +2,6 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const sleepSchema = new Schema(
-
     {
         timeSlept: {
             type: String,
@@ -20,7 +19,7 @@ const sleepSchema = new Schema(
         username: {
             type: String,
             required: true
-        },
+        }
     },
     {
         toJSON: {
