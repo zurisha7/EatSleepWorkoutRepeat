@@ -8,6 +8,10 @@ const eatSchema = new Schema({
 	caloriesEaten: {
 		type: Number,
 		required: true
+	},
+	foodName: {
+		type: String,
+		required: true
 	}
 });
 
