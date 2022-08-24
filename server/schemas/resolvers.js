@@ -51,7 +51,6 @@ const resolvers = {
             return Food.findOne({ _id });
         }
     },
-
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);

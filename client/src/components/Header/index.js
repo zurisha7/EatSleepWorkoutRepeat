@@ -17,14 +17,14 @@ const Header = () => {
 
     return (
         <header>
-            <div className="jumbotron">
+            <div className="jumbotron center">
                 <div className="container text-center">
                     <img src={logo} alt="EatSleepWorkoutRepeatLogo" />
                 </div>
 
             </div>
 
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-inverse center">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

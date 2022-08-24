@@ -31,6 +31,7 @@ const Workout = () => {
                 </div>
             </div>
         </main>
+
     );
 };
 
