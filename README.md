@@ -20,7 +20,7 @@
 ---
 
 ## Deployment
-[EatSleepWorkoutRepeat]()
+[EatSleepWorkoutRepeat](https://eatsleepworkoutrepeat.herokuapp.com/)
 
 ---
 
@@ -56,7 +56,18 @@ To install all of the packages and dependencies, go to the root directory and ty
 	npm install	 
 
 ## Screenshots
-
+Sign Up Page
+![image](https://user-images.githubusercontent.com/99767019/186551600-3bafc317-eef0-4353-9fcc-40e664e279e6.png)
+Landing Page
+![image](https://user-images.githubusercontent.com/99767019/186551709-2ad7e640-a29f-4b47-96a4-97ab4b7f3040.png)
+Food Page
+![image](https://user-images.githubusercontent.com/99767019/186551789-77911960-0526-47c2-af34-5bd33af36f4d.png)
+Sleep Page
+![image](https://user-images.githubusercontent.com/99767019/186551822-c41b75ef-56f6-44b9-ae73-bb5de45037c9.png)
+Workout Page
+![image](https://user-images.githubusercontent.com/99767019/186551944-aee2c0f1-c3e3-41a9-aafb-a2fd859185f1.png)
+Contact Page
+![image](https://user-images.githubusercontent.com/99767019/186551980-da132a4d-0250-49f5-a46c-36bd3576aace.png)
 
 
 ## Usage
